@@ -1,17 +1,26 @@
-import { episodeList } from './data.js';
 import { useState } from 'react';
+import { episodeList } from './data.js';
 
-export default function App() {
-  // TODO
-  const [episodeList, setEpisodeList] = useState(episodeList);
+const App = () => {
+  const [episodeObj, setEpisodeObj] = useState(episodeList[0]);
+  // onClick={setEpisodeObj({ ...obj })}
   return (
     <>
-      <ol>
-        {episodeList.map(elem => {
-          return (`<li>${elem.title}</li>`);
-        }
-        )}
-      </ol>
+      <h2>Dark Echoes</h2>
+      <p>Episodes</p>
+      <section>
+        <ul>
+          {episodeList.map((obj) => <li key={obj.id}> {obj.title}</li>)}
+        </ul >
+        <ul>
+          <li>Episode {episodeObj.id}</li>
+          <li>{episodeObj.title}</li>
+          <li>{episodeObj.description}</li>
+          <button>Watch Now</button>
+        </ul>
+      </section>
     </>
-  );
+  )
 }
+
+export default App;
